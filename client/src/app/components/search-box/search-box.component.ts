@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search-box',
@@ -13,6 +14,7 @@ export class SearchBoxComponent implements OnInit {
 
   widthPage: any;
   isMobile = true;
+  public form: FormGroup;
 
   // @HostListener('window:resize', ['$event'])
   // /* istanbul ignore next */
@@ -28,5 +30,17 @@ export class SearchBoxComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    this.buildForm();
+  }
+
+  buildForm() {
+    this.form = new FormGroup({
+      searchInput: new FormControl(''),
+      searchBtn: new FormControl('')
+    });
+  }
+
+  onSubmit(event) {
+    console.log(event);
   }
 }

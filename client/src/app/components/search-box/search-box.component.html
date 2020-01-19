@@ -1,3 +1,15 @@
 <div class="search-box-container">
-  <p>SEARCH-BOX</p>
+  <div class="search-box">
+    <!-- <div class="icon-container"> -->
+      <img class="icon-container" src="../../../assets/images/Logo_ML.png" alt="logo" class="meli-logo">
+    <!-- </div> -->
+    <form [formGroup]="form" class="search-form-container">
+      <input formControlName="searchInput" type="text" class="input-box" placeholder="Nunca dejes de buscar">
+      <button (submit)="onSubmit($event)" type="submit" class="search-box-btn">
+        <div class="btn-img">
+          <img src="../../../assets/images/ic_Search.png" alt="search">
+        </div>
+      </button>
+    </form>
+  </div>
 </div>
