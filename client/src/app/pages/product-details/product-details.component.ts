@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'app-product-details',
@@ -7,12 +8,14 @@ import { Router } from '@angular/router';
   templateUrl: './product-details.component.html',
 })
 export class ProductDetailsComponent implements OnInit {
-  constructor( private router: Router ) {
+  constructor( private router: Router, private route: ActivatedRoute, private appService: AppService ) {
   }
 
-  widthPage: any;
-  isMobile: boolean;
+  itemId: string;
+  item: {};
 
   ngOnInit() {
+    this.itemId = this.route.snapshot.paramMap.get('id');
+    this.item = this.appService.mockResponseItemDetails(this.itemId).item;
   }
 }

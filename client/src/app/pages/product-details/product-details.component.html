@@ -1,4 +1,26 @@
 <!-- <tn-insurance-header *ngIf="!isMobile"></tn-insurance-header> -->
-<div class="search-page">
-  PRODUCT DETAILS PAGE
+<div class="product-details-page">
+  <div class="page-content">
+    <div class="product-description-container">
+      <div class="img-container">
+        <img [src]="item.picture" alt="item-picture">
+      </div>
+      <div class="product-description">
+        <div class="title">Descripcion del producto</div>
+        <div class="description">{{item.description}}</div>
+      </div>
+    </div>
+    <div class="product-details-container">
+      <div class="condition">
+        {{item.condition}} - {{item.sold_quantity}} vendidos
+      </div>
+      <div class="title">
+        {{item.title}}
+      </div>
+      <div class="price">
+        $ {{item.price.amount}}<span class="decimals">{{item.price.decimals}}</span>
+      </div>
+      <button type="button">Comprar</button>
+    </div>
+  </div>
 </div>
