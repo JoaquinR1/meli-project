@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'app-items',
@@ -7,12 +8,13 @@ import { Router } from '@angular/router';
   templateUrl: './items.component.html',
 })
 export class ItemsComponent implements OnInit {
-  constructor( private router: Router ) {
+
+  constructor( private router: Router, private appService: AppService ) {
   }
 
-  widthPage: any;
-  isMobile: boolean;
+  items = {};
 
   ngOnInit() {
+    this.items = this.appService.mockResponseItems();
   }
 }

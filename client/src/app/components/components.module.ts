@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // components
 import { SearchBoxComponent } from './search-box/search-box.component';
+import { ItemComponent } from './item/item.component';
 
 @NgModule({
   imports: [
@@ -13,12 +14,15 @@ import { SearchBoxComponent } from './search-box/search-box.component';
   ],
   declarations: [
     SearchBoxComponent,
+    ItemComponent
   ],
   exports: [
     SearchBoxComponent,
+    ItemComponent
   ],
   entryComponents: [
     SearchBoxComponent,
+    ItemComponent
   ],
 })
 export class ComponentsModule { }

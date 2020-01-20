@@ -1,0 +1,43 @@
+.item-container {
+  background-color: #FFFFFF;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+
+  .item-img {
+    cursor: pointer;
+    width: 180px;
+    height: 180px;
+    border-radius: 4px;
+    margin-right: 16px;
+  }
+
+  .item-description {
+    margin-top: 16px;
+    margin-right: auto;
+    max-width: 600px;
+
+    .item-price {
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .price {
+        margin: 0;
+        font-size: 24px;
+        margin-right: 8px;
+      }
+    }
+
+    .item-title {
+      font-size: 18px;
+    }
+  }
+
+  .item-state {
+    margin-top: 16px;
+    color: #999999;
+  }
+}

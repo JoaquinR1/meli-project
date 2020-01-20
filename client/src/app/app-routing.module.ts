@@ -13,7 +13,9 @@ const routes: Routes = [
   {
     path: 'items/:id',
     loadChildren: './pages/product-details/product-details.module#ProductDetailsModule',
-  }
+  },
+  // Fallback when no prior route is matched
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

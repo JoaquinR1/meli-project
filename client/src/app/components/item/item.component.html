@@ -1,0 +1,14 @@
+<div class="item-container">
+  <img class="item-img" [src]="item.picture" alt="">
+  <div class="item-description">
+    <div class="item-price">
+      <p class="price">$ {{item.price.amount}}</p>
+      <img *ngIf="item.free_shipping" class="shipping-icon" src="../../../assets/images/ic_shipping.png"
+        alt="free-shipping" height="18" width="18">
+    </div>
+    <div class="item-title">
+      {{item.title}}
+    </div>
+  </div>
+  <p class="item-state">Capital Federal</p>
+</div>

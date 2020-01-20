@@ -1,4 +1,9 @@
 <!-- <tn-insurance-header *ngIf="!isMobile"></tn-insurance-header> -->
-<div class="search-page">
-  ITEMS PAGE
+<div class="items-page">
+  <div class="results-container">
+    <div class="item" *ngFor="let item of items.items">
+      <app-item [item]="item"></app-item>
+      <div class="div-line"></div>
+    </div>
+  </div>
 </div>

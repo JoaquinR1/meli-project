@@ -1,0 +1,18 @@
+.items-page {
+  padding: 32px 64px;
+
+  .results-container {
+    background-color: #FFFFFF;
+
+    .item {
+      margin: 0 auto;
+
+      .div-line {
+        background-color: #EEEEEE;
+        height: 2px;
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
+  }
+}
