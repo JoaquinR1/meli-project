@@ -3,6 +3,7 @@ const API_ITEM = 'https://api.mercadolibre.com/items/'; // :id :id/description
 
 var request = require('request');
 var searchResult = require('../models/searchResult.model');
+var description = require('../models/itemDescription.model');
 
 var itemCtrl = {};
 
@@ -37,8 +38,26 @@ itemCtrl.searchItem = (req, res) => {
 }
 
 itemCtrl.getItemById = (req, res) => {
-  // Hacer las llamadas en paralelo a :id y :id/description
-  // Promise.all() q.controller
+  var id = req.params.id;
+  description.author.name = 'Joaquín';
+  description.author.lastname = 'Reitú Gastaldo';
+  description.item = {};
+
+  if (!id) {
+    res.status(200).send(description)
+  } else {
+    const item = getItem(id);
+    const itemDesc = getItemDescription(id)
+    // Llamadas en paralelo
+    Promise.all([item, itemDesc])
+      .then(resp => {
+        const itemResponse = outputItemResponse(resp);
+        description.item = itemResponse;
+
+        res.send(description);
+      })
+      .catch(e => res.send(`Error ${e}`));
+  }
 }
 
 function getResults(respItems) {
@@ -75,6 +94,45 @@ function createItem(element) {
     free_shipping: element.shipping.free_shipping,
     address: element.address.state_name
   }
+}
+
+function getItem(id) {
+  const url = `${API_ITEM}${id}`;
+  var response = {};
+  return new Promise((resolve, reject) => {
+    request(encodeURI(url), (err, resp, body) => {
+      resolve(JSON.parse(body));
+    });
+  });
+}
+
+function getItemDescription(id) {
+  const url = `${API_ITEM}${id}/description`;
+  var response = {};
+  return new Promise((resolve, reject) => {
+    request(encodeURI(url), (err, resp, body) => {
+      resolve(JSON.parse(body));
+    });
+  });
+}
+
+function outputItemResponse(data) {
+  const itemResp = data[0];
+  const descriptionResp = data[1];
+  return {
+    id: itemResp.id,
+    title: itemResp.title,
+    price: {
+      currency: itemResp.currency_id,
+      amount: itemResp.price,
+      decimals: itemResp.decimals || 00
+    },
+    picture: itemResp.thumbnail,
+    condition: itemResp.condition,
+    free_shipping: itemResp.shipping.free_shipping,
+    address: itemResp.seller_address.state.name,
+    description: descriptionResp.plain_text
+  };
 }
 
 module.exports = itemCtrl;
