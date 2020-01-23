@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CacheService } from './services/cache/cache.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,18 @@ import { CacheService } from './services/cache/cache.service';
 export class AppComponent {
   title = 'MarketFront';
 
-  constructor( private router: Router, private cacheService: CacheService ) {}
+  constructor( private router: Router, private cacheService: CacheService, private location: Location ) {}
 
   onSubmitSearch(string) {
-    console.log(string);
     this.cacheService.set(this.cacheService.constants.SEARCH_QUERY, string);
-    this.router.navigate(['/items']);
+    if (this.location.path() === '/items') {
+      location.reload();
+    } else {
+      this.router.navigate(['/items']);
+    }
+  }
+
+  onLogoClick() {
+    this.router.navigate(['/']);
   }
 }

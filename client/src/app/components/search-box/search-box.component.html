@@ -1,6 +1,6 @@
 <div class="search-box-container">
   <div class="search-box">
-    <img class="icon-container" src="../../../assets/images/Logo_ML.png" alt="logo" class="meli-logo">
+    <img class="icon-container" src="../../../assets/images/Logo_ML.png" alt="logo" class="meli-logo" (click)="onLogoClick()">
     <form [formGroup]="form" class="search-form-container" action="/items">
       <input formControlName="searchInput" type="text" class="input-box" placeholder="Nunca dejes de buscar">
       <button (click)="onSubmit()" type="submit" class="search-box-btn">

@@ -13,6 +13,7 @@ export class SearchBoxComponent implements OnInit {
   @Input() text = '';
 
   @Output() submitSearch: EventEmitter<String> = new EventEmitter<String>();
+  @Output() logoClick: EventEmitter<Boolean> = new EventEmitter<Boolean>();
 
   widthPage: any;
   isMobile = true;
@@ -36,5 +37,9 @@ export class SearchBoxComponent implements OnInit {
     if (searchQuery) {
       this.submitSearch.emit(searchQuery);
     }
+  }
+
+  onLogoClick() {
+    this.logoClick.emit();
   }
 }
