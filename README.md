@@ -7,7 +7,7 @@ Client/server app para búsqueda y visualización de productos
   - NodeJS
 
 **Installation**
-`git clone https://github.com/JoaquinR1/meli-project.git` 
+  - `git clone https://github.com/JoaquinR1/meli-project.git` 
 
 **Iniciar server:**
   - `cd server`
