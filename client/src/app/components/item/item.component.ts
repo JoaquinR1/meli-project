@@ -8,12 +8,16 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class ItemComponent implements OnInit {
 
-  @Input() item = {};
+  @Input() item;
 
-  @Output() btnClick: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() itemClick: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {}
 
   ngOnInit() {
+  }
+
+  onItemClick() {
+    this.itemClick.emit(this.item.id);
   }
 }

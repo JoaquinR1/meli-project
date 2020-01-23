@@ -13,9 +13,14 @@ export class ProductDetailsComponent implements OnInit {
 
   itemId: string;
   item: {};
+  pageReady = false;
 
   ngOnInit() {
     this.itemId = this.route.snapshot.paramMap.get('id');
-    this.item = this.appService.mockResponseItemDetails(this.itemId).item;
+    this.appService.getProductDetails(this.itemId).subscribe(res => {
+      this.item = res.item;
+      this.pageReady = true;
+    });
+    // this.item = this.appService.mockResponseItemDetails(this.itemId).item;
   }
 }

@@ -1,6 +1,6 @@
 <!-- <tn-insurance-header *ngIf="!isMobile"></tn-insurance-header> -->
 <div class="product-details-page">
-  <div class="page-content">
+  <div class="page-content" *ngIf="pageReady">
     <div class="product-description-container">
       <div class="img-container">
         <img [src]="item.picture" alt="item-picture">

@@ -1,8 +1,8 @@
 <!-- <tn-insurance-header *ngIf="!isMobile"></tn-insurance-header> -->
 <div class="items-page">
-  <div class="results-container">
+  <div class="results-container" *ngIf="pageReady">
     <div class="item" *ngFor="let item of items.items">
-      <app-item [item]="item"></app-item>
+      <app-item [item]="item" (itemClick)="onItemClick($event)"></app-item>
       <div class="div-line"></div>
     </div>
   </div>

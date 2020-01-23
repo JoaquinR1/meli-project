@@ -127,8 +127,9 @@ function outputItemResponse(data) {
       amount: itemResp.price,
       decimals: itemResp.decimals || 00
     },
-    picture: itemResp.thumbnail,
+    picture: itemResp.pictures[0].url,
     condition: itemResp.condition,
+    sold_quantity: itemResp.sold_quantity,
     free_shipping: itemResp.shipping.free_shipping,
     address: itemResp.seller_address.state.name,
     description: descriptionResp.plain_text

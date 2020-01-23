@@ -1,5 +1,5 @@
 <div class="item-container">
-  <img class="item-img" [src]="item.picture" alt="">
+  <img class="item-img" [src]="item.picture" alt="" (click)="onItemClick()">
   <div class="item-description">
     <div class="item-price">
       <p class="price">$ {{item.price.amount}}</p>

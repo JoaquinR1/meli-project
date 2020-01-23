@@ -1,4 +1,4 @@
-const API_SERVER = 'https://localhost/3000/api';
+const API_SERVER = 'http://localhost:3000/api';
 
 export function searchItems(query) {
   return `${API_SERVER}/items?q=${query}`;

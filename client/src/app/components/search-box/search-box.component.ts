@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CacheService } from '../../services/cache/cache.service';
 
 @Component({
   selector: 'app-search-box',
@@ -16,18 +18,7 @@ export class SearchBoxComponent implements OnInit {
   isMobile = true;
   public form: FormGroup;
 
-  // @HostListener('window:resize', ['$event'])
-  // /* istanbul ignore next */
-  // onResize(event) {
-  //   this.widthPage = event.target.innerWidth;
-  //   if (this.widthPage <= 768) {
-  //     this.isMobile = true;
-  //   } else {
-  //     this.isMobile = false;
-  //   }
-  // }
-
-  constructor() {}
+  constructor( private router: Router, private cacheService: CacheService ) {}
 
   ngOnInit() {
     this.buildForm();
@@ -40,7 +31,11 @@ export class SearchBoxComponent implements OnInit {
     });
   }
 
-  onSubmit(event) {
-    console.log(event);
+  onSubmit() {
+    const searchQuery = this.form.get('searchInput').value;
+    if (searchQuery) {
+      this.cacheService.set(this.cacheService.constants.SEARCH_QUERY, searchQuery);
+      this.router.navigate(['/items']);
+    }
   }
 }
