@@ -12,7 +12,7 @@ export class SearchBoxComponent implements OnInit {
 
   @Input() text = '';
 
-  @Output() helpClickEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() submitSearch: EventEmitter<String> = new EventEmitter<String>();
 
   widthPage: any;
   isMobile = true;
@@ -34,8 +34,7 @@ export class SearchBoxComponent implements OnInit {
   onSubmit() {
     const searchQuery = this.form.get('searchInput').value;
     if (searchQuery) {
-      this.cacheService.set(this.cacheService.constants.SEARCH_QUERY, searchQuery);
-      this.router.navigate(['/items']);
+      this.submitSearch.emit(searchQuery);
     }
   }
 }

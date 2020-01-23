@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AppService } from '../../services/app.service';
 
 @Component({
@@ -8,7 +8,8 @@ import { AppService } from '../../services/app.service';
   templateUrl: './product-details.component.html',
 })
 export class ProductDetailsComponent implements OnInit {
-  constructor( private router: Router, private route: ActivatedRoute, private appService: AppService ) {
+
+  constructor( private route: ActivatedRoute, private appService: AppService ) {
   }
 
   itemId: string;
@@ -21,6 +22,5 @@ export class ProductDetailsComponent implements OnInit {
       this.item = res.item;
       this.pageReady = true;
     });
-    // this.item = this.appService.mockResponseItemDetails(this.itemId).item;
   }
 }
